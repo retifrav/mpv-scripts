@@ -232,6 +232,7 @@ function excerpt_seek_end_handler()
     mp.commandv("seek", excerpt_end, "absolute", "exact")
 end
 
+-- that's Windows only, obviously
 function setClipboard (text)
     local echo
     if text ~= "" then

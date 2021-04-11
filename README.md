@@ -30,5 +30,5 @@ and then:
 The result might look like:
 
 ``` sh
-ffmpeg -ss 00:00:06 -i /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv -t 11.325 /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE-cut.mp4
+ffmpeg -ss 00:00:06 -i /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv -t 11.325 The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE-cut.mp4
 ```

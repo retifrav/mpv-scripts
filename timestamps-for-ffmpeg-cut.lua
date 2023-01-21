@@ -252,7 +252,7 @@ function excerpt_write_handler()
     end
 
     local ffmpegCmd = string.format(
-        "ffmpeg -ss %s -i %s -t %s %s-cut.mp4",
+        "ffmpeg -ss %s -i %s -t %s -crf 18 %s-cut.mp4",
         formatTimeString(excerpt_begin),
         mp.get_property_native("path"),
         excerpt_end - excerpt_begin,

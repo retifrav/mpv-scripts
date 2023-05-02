@@ -15,7 +15,7 @@ Based on: https://gitlab.com/lvml/mpv-plugin-excerpt
 How to use the script:
 
 ``` sh
-$ mpv --script=/path/to/excerpt.lua -fs \
+$ mpv --script=/path/to/timestamps-for-ffmpeg-cut.lua -fs \
 --script-opts=osc-layout=bottombar \
 --script-opts=excerpt-write-to-file=1 \
 /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv
@@ -30,5 +30,7 @@ and then:
 The result might look like:
 
 ``` sh
-ffmpeg -ss 00:00:06 -i /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv -t 11.325 The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE-cut.mp4
+ffmpeg -ss 00:00:06 -i /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv -t 11.325 -c copy -map_chapters -1 /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE-cut.mp4
 ```
+
+If you'll get bad results such as messed up keyframes and weird timings, especially on short cuts, try to drop `-c copy` and set something like `-crf 18`.

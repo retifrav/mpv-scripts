@@ -4,6 +4,8 @@ Scripts for MPV media player.
 
 To make scripts available/loaded by default, place them into `~/.config/mpv/scripts/`. Otherwise, if some script is not supposed to be always loaded, keep it somewhere else and use `--script` argument to load it when it is needed.
 
+If a script has options (*`--script-opts`*), then apparently you can create a config for it in `~/.config/mpv/script-opts/` and fill it with default values. For instance, if the script name is `timestamps-for-ffmpeg-cut.lua` (*can have dashes, although underscores seem to be more common/recommended*), then the config file name would be `~/.config/mpv/script-opts/timestamps_for_ffmpeg_cut.conf` (*here the underscores seem to be required*).
+
 <!-- MarkdownTOC -->
 
 - [delete-file](#delete-file)
@@ -39,7 +41,21 @@ $ mpv --script=/path/to/timestamps-for-ffmpeg-cut.lua -fs \
     /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv
 ```
 
-and then:
+The options could perhaps live in the `~/.config/mpv/script-opts/timestamps-for-ffmpeg-cut.conf`:
+
+``` ini
+osc-layout=bottombar
+excerpt-write-to-file=1
+```
+
+and the the launch command would be:
+
+``` sh
+$ mpv --script=/path/to/timestamps-for-ffmpeg-cut.lua -fs \
+    /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv
+```
+
+Anyway, once the script is loaded:
 
 1. Mark the start of fragment with `SHIFT + i`
 2. Mark the end of fragment with `SHIFT + o`

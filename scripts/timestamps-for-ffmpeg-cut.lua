@@ -1,4 +1,4 @@
--- A script to generate a FFmpeg command for cutting a video fragment
+-- https://gitlab.com/lvml/mpv-plugin-excerpt
 
 utils = require 'mp.utils'
 

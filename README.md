@@ -7,6 +7,7 @@ To make scripts available/loaded by default, place them into `~/.config/mpv/scri
 <!-- MarkdownTOC -->
 
 - [delete-file](#delete-file)
+- [ignore-non-music-files](#ignore-non-music-files)
 - [timestamps-for-ffmpeg-cut](#timestamps-for-ffmpeg-cut)
 
 <!-- /MarkdownTOC -->
@@ -19,17 +20,23 @@ Press `Ctrl` + `Delete` to mark currently playing file for deletion. To unmark (
 
 Pressing `Alt` + `Delete` shows the current list of files marked for deletion. Pressing `Ctrl` + `Shift` + `Delete` clears the list.
 
+## ignore-non-music-files
+
+Original script: <https://github.com/mpv-player/mpv/issues/2595#issuecomment-808723731>
+
+Ignores non-media (*text, album covers*) files when opening a folder.
+
 ## timestamps-for-ffmpeg-cut
 
-Based on: https://gitlab.com/lvml/mpv-plugin-excerpt
+Based on: <https://gitlab.com/lvml/mpv-plugin-excerpt>
 
-How to use the script:
+To run it:
 
 ``` sh
 $ mpv --script=/path/to/timestamps-for-ffmpeg-cut.lua -fs \
---script-opts=osc-layout=bottombar \
---script-opts=excerpt-write-to-file=1 \
-/path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv
+    --script-opts=osc-layout=bottombar \
+    --script-opts=excerpt-write-to-file=1 \
+    /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv
 ```
 
 and then:
@@ -41,7 +48,12 @@ and then:
 The result might look like:
 
 ``` sh
-ffmpeg -ss 00:00:06 -i /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv -t 11.325 -crf 18 -c:a copy -map_chapters -1 /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE-cut.mp4
+$ ffmpeg -ss 00:00:06 \
+    -i /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE.mkv \
+    -t 11.325 \
+    -crf 18 -c:a copy \
+    -map_chapters -1 \
+    /path/to/The.Empty.Man.2020.720p.WEBRip.X264-DEFLATE-cut.mp4
 ```
 
 If you don't want to re-encode video, then replace `-crf 18` with `-c:v copy`, but be aware that you'll likely get messed up keyframes and weird timings, especially on short cuts. And if you'd like your video to be most compatible for playing in web-browsers, then you might need to re-encode audio, so if you don't get sound while playing in a web-browser, replace `-c:a copy` with `-c:a flac`.

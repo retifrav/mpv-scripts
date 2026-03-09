@@ -17,6 +17,8 @@ Original script: <https://github.com/zenyd/mpv-scripts/blob/master/delete_file.l
 
 Press `Ctrl` + `Delete` to mark currently playing file for deletion. To unmark (*the same currently playing file*) for deletion, press `Ctrl` + `Delete` again. Marked files are added to the list, which will get iterated on exit, and all the files in it will be deleted.
 
+Pressing `Alt` + `Delete` shows the current list of files marked for deletion. Pressing `Ctrl` + `Shift` + `Delete` clears the list.
+
 ## timestamps-for-ffmpeg-cut
 
 Based on: https://gitlab.com/lvml/mpv-plugin-excerpt

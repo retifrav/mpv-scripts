@@ -2,11 +2,20 @@
 
 Scripts for MPV media player.
 
+To make scripts available/loaded by default, place them into `~/.config/mpv/scripts/`. Otherwise, if some script is not supposed to be always loaded, keep it somewhere else and use `--script` argument to load it when it is needed.
+
 <!-- MarkdownTOC -->
 
+- [delete-file](#delete-file)
 - [timestamps-for-ffmpeg-cut](#timestamps-for-ffmpeg-cut)
 
 <!-- /MarkdownTOC -->
+
+## delete-file
+
+Original script: <https://github.com/zenyd/mpv-scripts/blob/master/delete_file.lua>
+
+Press `Ctrl` + `Delete` to mark currently playing file for deletion. To unmark (*the same currently playing file*) for deletion, press `Ctrl` + `Delete` again. Marked files are added to the list, which will get iterated on exit, and all the files in it will be deleted.
 
 ## timestamps-for-ffmpeg-cut
 
